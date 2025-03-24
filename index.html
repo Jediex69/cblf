@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carbon Based Lifeforms</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Carbon Based Lifeforms</h1>
+        <img src="img/cblf.jpg">
+    </header>
+
+    <section>
+        <h2>Descripción del grupo</h2>
+        <p>
+            <strong>Carbon Based Lifeforms</strong> es una banda sueca de música electrónica
+            formada por Johannes Hedberg y Daniel Ringström. Se radica en Gotemburgo, Suecia.
+            Su música está basada en <strong>space ambient</strong> de total inspiración científica,
+            su nombre literalmente significa <em>"formas de vida basadas en el carbono"</em>.
+            Carbon Based Lifeforms se formó en 1996 como un proyecto paralelo a su otro proyecto Notch.
+            En 1998 la banda comienza a publicar sus trabajos en MP3, y fue incluida en el disco promocional
+             <em>"103 best songs you never heard on MP3.com"</em> que provocó numerosas descargas y un aumento en la venta de discos.
+             En 2002 ficharon con el sello Ultimae Records y en 2014 con Blood Music, sumando 8 álbumes de estudio,
+             2 recopilatorios y 3 bandas sonoras.
+        </p>
+    </section>
+
+    <section>
+        <h2>Próximos conciertos</h2>
+        <table>
+            <tr>
+                <th>Fecha</th>
+                <th>Lugar</th>
+                <th>Hora</th>
+                <th>Precio</th>
+            </tr>
+            <tr>
+                <td>25/05/2025</td>
+                <td>Madrid</td>
+                <td>20:00</td>
+                <td>70 €</td>
+            </tr>
+            <tr>
+                <td>01/06/2025</td>
+                <td>Barcelona</td>
+                <td>21:00</td>
+                <td>60 €</td>
+            </tr>
+            <tr>
+                <td>06/06/2025</td>
+                <td>Córdoba</td>
+                <td>20:30</td>
+                <td>55 €</td>
+            </tr>
+            <tr>
+                <td>08/06/2025</td>
+                <td>Sevilla</td>
+                <td>19:30</td>
+                <td>55 €</td>
+              </tr>
+        </table>
+    </section>
+
+    <section>
+        <h2>Compra de entradas</h2>
+        <form id="formulario-compra" name="formulario-compra" action="confirmacion.html">
+            <fieldset>
+                <legend>Datos Personales</legend>
+                <label for="nombre">Nombre: </label><br/>
+                <input type="text" class="text" id="nombre" name="nombre" placeholder="Escribe tu nombre" required/><br/>
+            </fieldset>
+            <fieldset>
+                <legend>Detalles del Concierto</legend>
+                <label for="fecha">Fecha: </label><br/>
+                <input type="date" id="fecha" class="text" name="fecha" required>
+
+                <label for="lugar">Lugar: </label><br/>
+                <select id="lugar" name="lugar" class="text" required>
+                    <option value="" selected disabled>Seleccione una opción</option>
+                    <option value="madrid">Madrid</option>
+                    <option value="barcelona">Barcelona</option>
+                    <option value="cordoba">Córdoba</option>
+                    <option value="sevilla">Sevilla</option>
+                </select><br/>
+
+                <label for="cantidad">Cantidad: </label><br/>
+                <input type="number" id="cantidad" name="cantidad" min="1" class="text" required><br/>
+
+                <label for="categoria">Categoría:</label>
+                <select id="categoria" class="text" name="categoria" required><br/>
+                    <option value="" selected disabled>Seleccione una opción</option>
+                    <option value="general">General</option>
+                    <option value="vip">VIP</option>
+                </select><br/>
+            </fieldset>
+            <fieldset>
+                <legend>Método de Pago</legend>
+                <input type="radio" id="`pago" name="pago" value="tarjeta">
+                <label>Tarjeta</label>
+                <input type="radio" id="pago" name="pago" value="paypal">
+                <label>PayPal</label>
+                <input type="radio" id="pago" name="pago" value="transferencia">
+                <label>Transferencia</label>
+                <input type="radio" id="pago" name="pago" value="criptomoneda">
+                <label>Criptomoneda</label>
+            </fieldset>
+            <label for="terminos"><input type="checkbox" id="terminos" class="checkbox"> Acepto los términos y condiciones</label><br/><br/>
+            <div>
+                <button type="submit" id="confirmar">Confirmar Compra</button>
+            </div>
+        </form>
+    </section>
+    <script src="js/script.js"></script>
+</body>
+</html>
