@@ -9,7 +9,7 @@
 <body>
     <header>
         <h1>Carbon Based Lifeforms</h1>
-        <img src="img/cblf.jpg">
+        <img src="img/cblf.jpg" class="img">
     </header>
 
     <section>
@@ -69,15 +69,16 @@
             <fieldset>
                 <legend>Datos Personales</legend>
                 <label for="nombre">Nombre: </label><br/>
-                <input type="text" class="text" id="nombre" name="nombre" placeholder="Escribe tu nombre" required/><br/>
+                <input type="text" class="text" id="nombre" name="nombre" placeholder="Escribe tu nombre"/><br/>
             </fieldset>
+
             <fieldset>
                 <legend>Detalles del Concierto</legend>
                 <label for="fecha">Fecha: </label><br/>
-                <input type="date" id="fecha" class="text" name="fecha" required>
+                <input type="date" id="fecha" class="text" name="fecha">
 
                 <label for="lugar">Lugar: </label><br/>
-                <select id="lugar" name="lugar" class="text" required>
+                <select id="lugar" name="lugar" class="text">
                     <option value="" selected disabled>Seleccione una opción</option>
                     <option value="madrid">Madrid</option>
                     <option value="barcelona">Barcelona</option>
@@ -86,26 +87,28 @@
                 </select><br/>
 
                 <label for="cantidad">Cantidad: </label><br/>
-                <input type="number" id="cantidad" name="cantidad" min="1" class="text" required><br/>
+                <input type="number" id="cantidad" name="cantidad" min="1" class="text"><br/>
 
                 <label for="categoria">Categoría:</label>
-                <select id="categoria" class="text" name="categoria" required><br/>
+                <select id="categoria" class="text" name="categoria"><br/>
                     <option value="" selected disabled>Seleccione una opción</option>
                     <option value="general">General</option>
                     <option value="vip">VIP</option>
                 </select><br/>
             </fieldset>
+ 
             <fieldset>
                 <legend>Método de Pago</legend>
-                <input type="radio" id="`pago" name="pago" value="tarjeta">
-                <label>Tarjeta</label>
-                <input type="radio" id="pago" name="pago" value="paypal">
-                <label>PayPal</label>
-                <input type="radio" id="pago" name="pago" value="transferencia">
-                <label>Transferencia</label>
-                <input type="radio" id="pago" name="pago" value="criptomoneda">
-                <label>Criptomoneda</label>
+                <input type="radio" id="pago-tarjeta" name="pago" value="visa">
+                <img src="img/visa.png" class="metodosPago">
+                <input type="radio" id="pago-paypal" name="pago" value="paypal">
+                <img src="img/paypal.png" class="metodosPago">
+                <input type="radio" id="pago-transferencia" name="pago" value="mastercard">
+                <img src="img/master.png" class="metodosPago">
+                <input type="radio" id="pago-criptomoneda" name="pago" value="bizum">
+                <img src="img/bizum.jpg" class="metodosPago">
             </fieldset>
+ 
             <label for="terminos"><input type="checkbox" id="terminos" class="checkbox"> Acepto los términos y condiciones</label><br/><br/>
             <div>
                 <button type="submit" id="confirmar">Confirmar Compra</button>

@@ -1,20 +1,93 @@
-// Lógica para el formulario
 if (document.getElementById('formulario-compra')) {
     document.getElementById('formulario-compra').addEventListener('submit', function(e) {
         e.preventDefault();
         
-        const formData = {
-            nombre: document.getElementById('nombre').value,
-            fecha: document.getElementById('fecha').value,
-            lugar: document.getElementById('lugar').value,
-            cantidad: document.getElementById('cantidad').value,
-            categoria: document.getElementById('categoria').value,
-            pago: document.querySelector('input[name="pago"]:checked').value,
-            terminos: document.getElementById('terminos').checked
-        };
+        // Obtener elementos del formulario
+        const nombre = document.getElementById('nombre');
+        const fecha = document.getElementById('fecha');
+        const lugar = document.getElementById('lugar');
+        const cantidad = document.getElementById('cantidad');
+        const categoria = document.getElementById('categoria');
+        const pago = document.querySelectorAll('input[name="pago"]');
+        const terminos = document.getElementById('terminos');
+        
+        // Validar campos
+        let errores = [];
 
-        sessionStorage.setItem('formData', JSON.stringify(formData));
-        window.location.href = 'confirmacion.html';
+        // Validar nombre
+        if (nombre.value.trim() === '') {
+            errores.push('Nombre');
+            nombre.classList.add('error');
+        } else {
+            nombre.classList.remove('error');
+        }
+
+        // Validar fecha
+        if (fecha.value === '') {
+            errores.push('Fecha');
+            fecha.classList.add('error');
+        } else {
+            fecha.classList.remove('error');
+        }
+
+        // Validar lugar (no puede ser la opción por defecto)
+        if (lugar.value === '') {
+            errores.push('Lugar');
+            lugar.classList.add('error');
+        } else {
+            lugar.classList.remove('error');
+        }
+
+        // Validar cantidad
+        if (cantidad.value === '' || parseInt(cantidad.value) < 1) {
+            errores.push('Cantidad (mínimo 1)');
+            cantidad.classList.add('error');
+        } else {
+            cantidad.classList.remove('error');
+        }
+
+        // Validar categoría
+        if (categoria.value === '') {
+            errores.push('Categoría');
+            categoria.classList.add('error');
+        } else {
+            categoria.classList.remove('error');
+        }
+
+        // Validar método de pago
+        let pagoSeleccionado = false;
+        pago.forEach(radio => {
+            if (radio.checked) pagoSeleccionado = true;
+        });
+        if (!pagoSeleccionado) {
+            errores.push('Método de pago');
+        }
+
+        // Validar términos y condiciones
+        if (!terminos.checked) {
+            errores.push('Aceptar los términos y condiciones');
+            terminos.classList.add('error');
+        } else {
+            terminos.classList.remove('error');
+        }
+
+        // Mostrar errores o enviar
+        if (errores.length > 0) {
+            alert(`Debes completar los campos requeridos:\n${errores.join('\n')}`);
+        } else {
+            const formData = {
+                nombre: nombre.value,
+                fecha: fecha.value,
+                lugar: lugar.value,
+                cantidad: cantidad.value,
+                categoria: categoria.value,
+                pago: document.querySelector('input[name="pago"]:checked').value,
+                terminos: terminos.checked
+            };
+
+            sessionStorage.setItem('formData', JSON.stringify(formData));
+            window.location.href = 'confirmacion.html';
+        }
     });
 }
 
