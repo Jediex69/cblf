@@ -1,3 +1,6 @@
+// Validación y procesamiento del formulario
+
+//Detección del formulario y prevención del envio por defecto
 if (document.getElementById('formulario-compra')) {
     document.getElementById('formulario-compra').addEventListener('submit', function(e) {
         e.preventDefault();
@@ -30,7 +33,7 @@ if (document.getElementById('formulario-compra')) {
             fecha.classList.remove('error');
         }
 
-        // Validar lugar (no puede ser la opción por defecto)
+        // Validar lugar
         if (lugar.value === '') {
             errores.push('Lugar');
             lugar.classList.add('error');
@@ -85,30 +88,31 @@ if (document.getElementById('formulario-compra')) {
                 terminos: terminos.checked
             };
 
+            //Almacenamiento de los datos y envio a la pagina de confirmación
             sessionStorage.setItem('formData', JSON.stringify(formData));
             window.location.href = 'confirmacion.html';
         }
     });
 }
 
-// Lógica para la página de confirmación
+// Volcado de los datos del formulario en la página de confirmación
 if (document.getElementById('datosConfirmacion')) {
     const formData = JSON.parse(sessionStorage.getItem('formData'));
     
+    //Generación del resumen de compra
     if(formData) {
         const confirmacionHTML = `
             <p>Aquí tienes un resumen de tu compra:</p>
             <fieldset>
-            <strong>Nombre:</strong> ${formData.nombre}<br/>
-            <strong>Fecha:</strong> ${formData.fecha}<br/>
-            <strong>Lugar:</strong> ${formData.lugar}<br/>
-            <strong>Cantidad:</strong> ${formData.cantidad}<br/>
-            <strong>Categoría:</strong> ${formData.categoria}<br/>
-            <strong>Método de pago:</strong> ${formData.pago}<br/>
-            <strong>Términos aceptados:</strong> ${formData.terminos ? 'Sí' : 'No'}<br/>
+            <strong>Nombre:</strong> ${formData.nombre}<br>
+            <strong>Fecha:</strong> ${formData.fecha}<br>
+            <strong>Lugar:</strong> ${formData.lugar}<br>
+            <strong>Cantidad:</strong> ${formData.cantidad}<br>
+            <strong>Categoría:</strong> ${formData.categoria}<br>
+            <strong>Método de pago:</strong> ${formData.pago}<br>
+            <strong>Términos aceptados:</strong> ${formData.terminos ? 'Sí' : 'No'}<br>
             </fieldset>
         `;
-        
         document.getElementById('datosConfirmacion').innerHTML = confirmacionHTML;
     } else {
         document.getElementById('datosConfirmacion').innerHTML = '<p>No se encontraron datos de registro</p>';
